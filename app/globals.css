@@ -85,48 +85,7 @@
   @apply !pb-8;
 }
 /*custom gallery layout*/
-@media screen and (min-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(15, 1fr);
-    grid-template-rows: repeat(12, 1fr);
-  }
-  .image-one {
-    grid-row: 1 / span 6;
-    grid-column: 1 / span 1;
-  }
-  .image-two {
-    grid-row: 2/7;
-    grid-column: 2 / span 5;
-  }
-  .image-three {
-    grid-row: 3 / span 7;
-    grid-column: 7 / span 3;
-  }
-  .image-four {
-    grid-row: 2 / span 6;
-    grid-column: 10 / span 3;
-  }
-  .image-five {
-    grid-row: 1 / span 6;
-    grid-column: 13 / span 3;
-  }
-  .image-six {
-    grid-row: 7 / span 6;
-    grid-column: 1 / span 2;
-  }
-  .image-seven {
-    grid-row: 7 / span 5;
-    grid-column: 3 / span 4;
-  }
-  .image-eight {
-    grid-row: 8 / span 6;
-    grid-column: 10 / span 2;
-  }
-  .image-nine {
-    grid-row: 8 / span 5;
-    grid-column: 12 / span 3;
-  }
-}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -162,4 +121,59 @@ img:is(
   background-size: cover;
   filter: blur(3px);
   z-index: -1;
+}
+@media screen and (min-width: 768px) {
+  img:is(
+      .image-one,
+      .image-two,
+      .image-three,
+      .image-four,
+      .image-five,
+      .image-six,
+      .image-seven,
+      .image-eight,
+      .image-nine
+    ) {
+    max-height: 100%;
+  }
+  .gallery {
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+  img.image-one {
+    grid-row: 1 / span 6;
+    grid-column: 1 / span 1;
+  }
+  img.image-two {
+    grid-row: 2/7;
+    grid-column: 2 / span 5;
+  }
+  img.image-three {
+    grid-row: 3 / span 7;
+    grid-column: 7 / span 3;
+  }
+  img.image-four {
+    grid-row: 2 / span 6;
+    grid-column: 10 / span 3;
+  }
+  img.image-five {
+    grid-row: 1 / span 6;
+    grid-column: 13 / span 3;
+  }
+  img.image-six {
+    grid-row: 7 / span 6;
+    grid-column: 1 / span 2;
+  }
+  img.image-seven {
+    grid-row: 7 / span 5;
+    grid-column: 3 / span 4;
+  }
+  img.image-eight {
+    grid-row: 8 / span 6;
+    grid-column: 10 / span 2;
+  }
+  img.image-nine {
+    grid-row: 8 / span 5;
+    grid-column: 12 / span 3;
+  }
 }

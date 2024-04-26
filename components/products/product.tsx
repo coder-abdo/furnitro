@@ -7,30 +7,32 @@ import { ProductContent } from "./productContent";
 import { ProductCTO } from "./productCTO";
 
 export const ProductCard: FC<ProductType> = ({
-  isFeatured = false,
-  featuredText = "new",
-  imageSrc,
-  title,
+  featured = "NEW",
+  images = [],
+  name,
   description,
-  discountPrice,
-  discountAmount = 30,
+  discount = 30,
   price,
+  discountPrice = discount * price * 0.01,
 }) => {
   return (
     <div className="relative md:max-w-72 w-full group hover:cursor-pointer max-h-[446px]">
-      {isFeatured && featuredText === "new" ? (
-        <ProductBadge feature="new" title="new" />
-      ) : (
-        <ProductBadge feature="discount" title={`-${discountAmount}%`} />
+      {featured && (
+        <ProductBadge
+          feature={featured}
+          title={featured === "DISCOUNT" ? `-${discount}%` : featured}
+        />
       )}
-      <CardImage imageSrc={imageSrc} imageAlt={title} />
+      <CardImage
+        imageSrc={images[0]?.url ?? "https://picsum.photos/id/117/800/600"}
+        imageAlt={name}
+      />
       <ProductContent
-        title={title}
+        name={name}
         description={description}
-        price={price}
-        isFeatured={isFeatured}
-        featuredText={featuredText}
-        discountPrice={discountPrice}
+        price={discount ? discountPrice : price}
+        featured={featured}
+        discountPrice={price}
       />
       {/* hover effect*/}
       <ProductCTO />

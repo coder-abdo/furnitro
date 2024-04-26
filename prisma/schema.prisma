@@ -3,31 +3,32 @@
 
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// prisma/schema.prisma
+
+// Using PostgreSQL as the database
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["driverAdapters"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("SUPABASE_DATABASE_URL")
 }
-
-// prisma/schema.prisma
 
 // Define your data model
 model Product {
-  id          Int       @id @default(autoincrement())
-  name        String    @unique
+  id          Int         @id @default(autoincrement())
+  name        String
   description String
-  price       Decimal
-  category    Category  @relation(fields: [categoryId], references: [id])
-  orderItemId Int
-  orderItem   OrderItem @relation(fields: [orderItemId], references: [id])
+  price       Decimal     @db.Decimal(10, 2)
+  category    Category    @relation(fields: [categoryId], references: [id])
   categoryId  Int
   images      Image[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  OrderItem   OrderItem[]
+  featured    Featured?
+  discount    Int?
 }
 
 model Category {
@@ -49,20 +50,33 @@ model Image {
 
 model Order {
   id        Int         @id @default(autoincrement())
-  userId    Int
+  userId    String
   items     OrderItem[]
-  total     Decimal
-  status    String
+  total     Decimal     @db.Decimal(10, 2)
+  status    OrderStatus
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
 }
 
 model OrderItem {
-  id        Int       @id @default(autoincrement())
-  order     Order     @relation(fields: [orderId], references: [id])
+  id        Int     @id @default(autoincrement())
+  order     Order   @relation(fields: [orderId], references: [id])
   orderId   Int
-  products  Product[]
+  product   Product @relation(fields: [productId], references: [id])
   productId Int
   quantity  Int
-  price     Decimal
+  price     Decimal @db.Decimal(10, 2)
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum Featured {
+  NEW
+  DISCOUNT
 }

@@ -1,13 +1,17 @@
 type ProductType = {
-  id?: number | string;
-  imageSrc: string;
-  title: string;
+  id?: number;
+  images?: ProductImageType[];
+  name: string;
   description: string;
-  isFeatured?: boolean;
-  featuredText?: "new" | "discount";
+  featured?: "NEW" | "DISCOUNT";
   discountPrice?: number;
-  discountAmount?: number;
+  discount?: number;
   price: number;
+  categoryId: number;
 };
-
-export type { ProductType };
+type ProductImageType = {
+  id?: number;
+  url: string;
+  productId: number;
+};
+export type { ProductType, ProductImageType };

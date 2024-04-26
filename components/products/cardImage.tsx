@@ -10,8 +10,8 @@ export const CardImage: FC<Props> = ({ imageSrc, imageAlt }) => {
       src={imageSrc}
       alt={imageAlt}
       width={300}
-      height={300}
-      className="w-full object-cover h-2/3 relative"
+      height={200}
+      className="w-full h-1/2 object-cover relative"
     />
   );
 };
