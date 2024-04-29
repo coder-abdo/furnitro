@@ -1,3 +1,4 @@
+import { Decimal } from "@prisma/client/runtime/library";
 type ProductType = {
   id?: number;
   images?: ProductImageType[];
@@ -6,7 +7,7 @@ type ProductType = {
   featured?: "NEW" | "DISCOUNT";
   discountPrice?: number;
   discount?: number;
-  price: number;
+  price: number | Decimal;
   categoryId: number;
   createdAt?: Date;
   updatedAt?: Date;

@@ -13,7 +13,7 @@ export const ProductCard: FC<ProductType> = ({
   description,
   discount = 30,
   price,
-  discountPrice = discount * price * 0.01,
+  discountPrice = price - discount * price * 0.01,
 }) => {
   return (
     <div className="relative md:max-w-72 w-full group hover:cursor-pointer max-h-[446px]">

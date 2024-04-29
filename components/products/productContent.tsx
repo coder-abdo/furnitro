@@ -1,8 +1,9 @@
+import { Decimal } from "@prisma/client/runtime/library";
 import type { FC } from "react";
 type Props = {
   name: string;
   description: string;
-  price: number;
+  price: number | Decimal;
   featured?: "DISCOUNT" | "NEW";
   discountPrice?: number;
 };
