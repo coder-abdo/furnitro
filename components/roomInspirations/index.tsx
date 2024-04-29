@@ -12,7 +12,7 @@ export const InspirationRooms = ({ products }: Props) => {
       <InspirationContent />
       <div className="flex gap-4 md:flex-row flex-col">
         <CarouselNo1 products={products} />
-        <CarouselNo2 />
+        <CarouselNo2 products={products} />
       </div>
     </section>
   );
