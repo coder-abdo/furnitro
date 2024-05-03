@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Button } from "../ui/button";
 import { ProductType } from "@/types";
+import { Product } from "@prisma/client";
 const CustomRightArrow = (props: any) => {
   const { onClick } = props;
   return (
@@ -26,7 +27,7 @@ const settings = {
   prevArrow: null,
 };
 type Props = {
-  products: ProductType[];
+  products: Product[];
 };
 export const CarouselNo1 = ({ products }: Props) => {
   return (

@@ -4,10 +4,10 @@ import Slider from "react-slick";
 import { GitCommitHorizontal } from "lucide-react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { ProductType } from "@/types";
+import { Product } from "@prisma/client";
 
 type Props = {
-  products: ProductType[];
+  products: Product[];
 };
 const settings = {
   dots: true,

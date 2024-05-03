@@ -2,9 +2,9 @@ import React from "react";
 import { InspirationContent } from "./content";
 import { CarouselNo1 } from "./carouselNo1";
 import { CarouselNo2 } from "./carouselNo2";
-import { ProductType } from "@/types";
+import { Product } from "@prisma/client";
 type Props = {
-  products: ProductType[];
+  products: Product[];
 };
 export const InspirationRooms = ({ products }: Props) => {
   return (
